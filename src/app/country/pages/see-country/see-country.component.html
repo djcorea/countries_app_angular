@@ -1,0 +1,54 @@
+<div *ngIf="!country; else divCountry" 
+    class="alert alert-info">
+    Wait, please...
+</div>
+
+
+<ng-template #divCountry>
+    
+    
+    <div class="row">
+        <div class="col-12">
+            <h1>Country: {{country[0].name.common}}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Flag</h3>
+            <img [src]="country[0].flags.png" class="img-thumbnail" alt="country[0].name.common" srcset="">
+        </div>
+        <div class="col">
+            <ul class="list-goup">
+                <h2>Information</h2>
+                <li class="list-goup-item">
+                    <strong>Population: </strong>{{country[0].population|number}}
+                </li>
+                <li class="list-goup-item">
+                    <strong>Number Code: </strong>{{country[0].ccn3}}
+                </li>
+                <li class="list-goup-item">
+                    <strong>Alpha Code: </strong>{{country[0].cca3}}
+                </li>
+            </ul>
+        </div>
+
+        <h2>Translations</h2>
+        <div class="row">
+            <div class="col">
+                <span class="badge bg-primary mr-1">{{country[0].translations["ara"].common}}</span>
+                <span class="badge bg-primary mr-1">{{country[0].translations["swe"].common}}</span>
+                <span class="badge bg-primary mr-1">{{country[0].translations["jpn"].common}}</span>
+                <span class="badge bg-primary mr-1">{{country[0].translations["urd"].common}}</span>
+                <span class="badge bg-primary mr-1">{{country[0].translations["kor"].common}}</span>
+                <span class="badge bg-primary mr-1">{{country[0].translations["pol"].common}}</span>
+            </div>
+                        
+        </div>
+    </div>
+
+    <pre class="mt-3">
+        {{country |json}}
+    </pre>
+
+</ng-template>

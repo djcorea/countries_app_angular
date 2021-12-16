@@ -1,0 +1,53 @@
+<div class="animate__animated animate__fadeInDown animate__faster">
+
+    <h2>By Country</h2>
+    
+    <div class="row">
+        <div class="col">
+            <app-country-input
+                (onEnter)="search($event)"
+                (onDebounce)="sugestions($event)"
+                placeholder="Search Country..."
+            >
+            </app-country-input>
+        </div>
+    </div>
+
+    <ul  *ngIf="countriesSugestion.length>0" class="list-group">
+        <li *ngFor="let country of countriesSugestion" class="list-group-item list-group-item-action">
+            <a 
+                class="nav-link"
+                [routerLink]="['/name',country.altSpellings[0]]">
+                    {{country.name.common}}
+            </a>
+        </li>  
+        <li 
+            (click)="searchSugestion(searchTerm)"
+            class="list-group-item list-group-item-action">
+            <a 
+                class="nav-link">
+                    Buscar {{searchTerm}}
+            </a>
+        </li>  
+    </ul>
+    <hr >
+
+</div>
+
+<pre>
+    
+    
+</pre>
+
+<div *ngIf="theresError" class="alert alert-danger ">
+    Didn't find results for {{searchTerm}}
+</div>
+
+<div *ngIf="countries.length>0" class="row">
+    <div class="col">
+        <app-country-table
+            [countries]=countries
+        >
+        </app-country-table>
+    </div>
+</div>

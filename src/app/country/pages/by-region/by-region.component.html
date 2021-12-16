@@ -1,0 +1,31 @@
+<div class="animate__animated animate__fadeInDown animate__faster">
+
+<h3>Search by region</h3>
+<hr>
+<h5>Select region</h5>
+
+<div class="row">
+    <div class="col">
+        <!-- CONDITIONAL CLASSES -->
+        <!-- [class.btn-primary]="region===activeRegion" -->
+        <!-- [ngClass]="{
+            'btn-primary': region===activeRegion
+        }" -->
+        <button *ngFor="let region of regions"
+            [class]="getClassCSS(region) "
+            (click)="activateRegion(region)"
+        >
+            {{region | titlecase}}
+        </button>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col">
+        <app-country-table *ngIf="countries.length>0"
+            [countries]=countries
+        >
+
+        </app-country-table>
+    </div>
+</div>
